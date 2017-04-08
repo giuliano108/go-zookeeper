@@ -237,6 +237,14 @@ func WithHostProvider(hostProvider HostProvider) connOption {
 	}
 }
 
+// WithConnectTimeout returns a connection option specifying a non-default
+// timeout on establishing a connection to a ZooKeeper server
+func WithConnectTimeout(connectTimeout time.Duration) connOption {
+	return func(c *Conn) {
+		c.connectTimeout = connectTimeout
+	}
+}
+
 // EventCallback is a function that is called when an Event occurs.
 type EventCallback func(Event)
 
